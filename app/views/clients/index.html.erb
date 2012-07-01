@@ -1,25 +1,43 @@
+<% provide(:title, "Client Index") %>
 <h1>Listing clients</h1>
+
+
+
 
 <table>
   <tr>
     <th>Firstname</th>
- 
+    <th>Lastname</th>
+    <th>Birthdate</th>
+    <th>Title</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @clients.each do |client| %>
+
   <tr>
     <td><%= client.firstname %></td>
-   
-   
+    <td><%= client.lastname %></td>
+    <td><%= client.birthdate %></td>
+    <td><%= client.title %></td>
     <td><%= link_to 'Show', client %></td>
     <td><%= link_to 'Edit', edit_client_path(client) %></td>
     <td><%= link_to 'Destroy', client, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
+
 <% end %>
 </table>
+<%= form_tag clients_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+	<%= submit_tag "Search", :name => nil %>
+
+	
+  </p>
+<% end %>
+
 
 <br />
 

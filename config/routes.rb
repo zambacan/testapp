@@ -1,5 +1,15 @@
 Testapp::Application.routes.draw do
+
+
+  get "products/index"
+
+  get "products/new"
+
+  get "products/show"
+
+root to: "clients#index"
   resources :clients
+ 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

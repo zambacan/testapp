@@ -2,8 +2,11 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
-
+    # @clients = Client.all
+ # @clients = Client.paginate(page: params[:page])
+ 
+   @clients = Client.search(params[:search])
+ 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @clients }
@@ -14,7 +17,7 @@ class ClientsController < ApplicationController
   # GET /clients/1.json
   def show
     @client = Client.find(params[:id])
-
+ @transactions = @client.transactions# .paginate(page: params[:page])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @client }

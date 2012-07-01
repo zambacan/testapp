@@ -5,10 +5,29 @@
   <%= @client.firstname %>
 </p>
 
+<p>
+  <b>Lastname:</b>
+  <%= @client.lastname %>
+</p>
 
+<p>
+  <b>Birthdate:</b>
+  <%= @client.birthdate %>
+</p>
 
-
-
+<p>
+  <b>Title:</b>
+  <%= @client.title %>
+</p>
+<div class="span8">
+  <% if @client.transactions.any? %>
+    <h3>Transactions (<%= @client.transactions.count %>)</h3>
+    <ol class="transactions">
+      <%= render @transactions %>
+    </ol>
+    
+  <% end %>
+</div>
 
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>
